@@ -1,0 +1,11 @@
+.container {
+    width: 25%;
+    margin: 30px auto;
+}
+
+.hr {
+    background-color: black;
+    height: 3px;
+    border: 0;
+    margin: 0;
+}

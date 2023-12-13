@@ -1,0 +1,25 @@
+const boxes = [
+    { id: 'box-1', size: 'big', color: 'green', dot: true },
+    { id: 'box-2', size: 'small', color: 'blue', dot: false },
+    { id: 'box-3', size: 'big', color: 'orange', dot: false },
+    { id: 'box-4', size: 'big', color: 'green', dot: false },
+    { id: 'box-5', size: 'small', color: 'blue', dot: false },
+    { id: 'box-6', size: 'small', color: 'orange', dot: true },
+    { id: 'box-7', size: 'big', color: 'green', dot: true },
+    { id: 'box-8', size: 'small', color: 'blue', dot: true },
+    { id: 'box-9', size: 'big', color: 'orange', dot: true },
+    { id: 'box-10', size: 'big', color: 'green', dot: true },
+    { id: 'box-11', size: 'small', color: 'blue', dot: false },
+    { id: 'box-12', size: 'big', color: 'orange', dot: true },
+    { id: 'box-13', size: 'big', color: 'green', dot: false },
+    { id: 'box-14', size: 'small', color: 'blue', dot: false },
+    { id: 'box-15', size: 'small', color: 'orange', dot: true },
+    { id: 'box-16', size: 'big', color: 'green', dot: false },
+    { id: 'box-17', size: 'small', color: 'blue', dot: false },
+    { id: 'box-18', size: 'big', color: 'orange', dot: false },
+    { id: 'box-19', size: 'big', color: 'green', dot: true },
+    { id: 'box-20', size: 'small', color: 'blue', dot: false },
+    { id: 'box-21', size: 'big', color: 'orange', dot: true },
+];
+
+export default boxes
