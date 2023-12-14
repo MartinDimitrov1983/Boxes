@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Box from './components/Box';
 import ActualProgress from './components/ActualProgress';
 import Loading from './components/Laoding';
-import Error from './components/Error'
+import Error from './components/Error';
 import './App.css';
 
 import { fetchData } from './utils/helperFunctions';
@@ -45,7 +45,7 @@ function App() {
     }
 
     if (!!error) {
-        return <Error message={error}/>;
+        return <Error message={error} />;
     }
 
     return (

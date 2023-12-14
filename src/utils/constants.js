@@ -1,12 +1,12 @@
 const TYPE = {
     BIG: 'big',
-    SMALL: 'small',
+    SMALL: 'small'
 };
 
 const COLOR = {
     GREEN: 'green',
     BLUE: 'blue',
-    ORANGE: 'orange',
+    ORANGE: 'orange'
 };
 
 const SMALL_TARGET = 60;

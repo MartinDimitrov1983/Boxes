@@ -29,12 +29,12 @@ const ActualProgress = ({ target, actualPercentage }) => {
 
 ActualProgress.propTypes = {
     target: PropTypes.number,
-    actualPercentage: PropTypes.number,
+    actualPercentage: PropTypes.number
 };
 
 ActualProgress.defaultProps = {
     target: 60,
-    actualPercentage: 0,
+    actualPercentage: 0
 };
 
 export default ActualProgress;

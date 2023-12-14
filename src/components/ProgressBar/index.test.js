@@ -24,7 +24,7 @@ describe('ProgressBar', () => {
     it('renders with the correct percentage and text', () => {
         const { container, getByText } = render(<ProgressBarWithData />);
         expect(container.querySelector('.progressBar')).toHaveStyle(
-            `width: ${percentage}%`,
+            `width: ${percentage}%`
         );
         expect(getByText(text)).toBeInTheDocument();
     });
@@ -52,7 +52,7 @@ describe('ProgressBar', () => {
 
         // Initial state: progress is set to 50%
         expect(container.querySelector('.progressBar')).toHaveStyle(
-            `width: ${percentage}%`,
+            `width: ${percentage}%`
         );
 
         // Update the percentage prop to 25%
@@ -60,7 +60,7 @@ describe('ProgressBar', () => {
 
         // After update: progress is set to 25%
         expect(container.querySelector('.progressBar')).toHaveStyle(
-            `width: ${percentageAfterRerender}%`,
+            `width: ${percentageAfterRerender}%`
         );
     });
 });

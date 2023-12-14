@@ -37,7 +37,7 @@ const ProgressBar = ({
                 <div
                     className={styles.constinerBottomText}
                     style={{
-                        transform: `translate(${progress - 50}%)`,
+                        transform: `translate(${progress - 50}%)`
                     }}
                 >
                     <p className={styles.bottomText}>{text}</p>
@@ -52,14 +52,14 @@ ProgressBar.propTypes = {
     percentage: PropTypes.number,
     text: PropTypes.string,
     textAbove: PropTypes.bool,
-    additionalText: PropTypes.string,
+    additionalText: PropTypes.string
 };
 
 ProgressBar.defaultProps = {
     percentage: 50,
     text: 'Test text',
     textAbove: true,
-    additionalText: '',
+    additionalText: ''
 };
 
 export default ProgressBar;

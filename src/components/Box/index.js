@@ -28,14 +28,14 @@ Box.propTypes = {
     size: PropTypes.oneOf([TYPE.SMALL, TYPE.BIG]),
     color: PropTypes.oneOf([COLOR.BLUE, COLOR.GREEN, COLOR.ORANGE]),
     dot: PropTypes.bool,
-    calculateSmallBoxes: PropTypes.func,
+    calculateSmallBoxes: PropTypes.func
 };
 
 Box.defaultProps = {
     size: TYPE.SMALL,
     color: COLOR.BLUE,
     dot: true,
-    calculateSmallBoxes: () => {},
+    calculateSmallBoxes: () => {}
 };
 
 export default Box;

@@ -11,14 +11,14 @@ describe('ActualProgress', () => {
             <ActualProgress
                 target={target}
                 actualPercentage={actualPercentage}
-            />,
+            />
         );
 
         // Assert that the component renders the target and actual percentages
         expect(getByText(`Small target ${target}%`)).toBeInTheDocument();
         expect(getByText(`Actual ${actualPercentage}%`)).toBeInTheDocument();
         expect(
-            getByText(`Difference ${Math.abs(target - actualPercentage)}%`),
+            getByText(`Difference ${Math.abs(target - actualPercentage)}%`)
         ).toBeInTheDocument();
     });
 });

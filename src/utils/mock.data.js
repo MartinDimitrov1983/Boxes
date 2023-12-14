@@ -21,7 +21,7 @@ const boxes = [
     { id: 'box-18', size: TYPE.BIG, color: COLOR.ORANGE, dot: false },
     { id: 'box-19', size: TYPE.BIG, color: COLOR.GREEN, dot: true },
     { id: 'box-20', size: TYPE.SMALL, color: COLOR.BLUE, dot: false },
-    { id: 'box-21', size: TYPE.BIG, color: COLOR.ORANGE, dot: true },
+    { id: 'box-21', size: TYPE.BIG, color: COLOR.ORANGE, dot: true }
 ];
 
 export default boxes;

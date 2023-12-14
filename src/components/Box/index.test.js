@@ -47,7 +47,7 @@ describe('Box', () => {
 
         // After click: opacity is false
         expect(container.querySelector(containerClass)).not.toHaveClass(
-            opacity,
+            opacity
         );
 
         // Click again to toggle back to true
