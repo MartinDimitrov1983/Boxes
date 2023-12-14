@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import ProgressBar from './index';
 
 const percentage = 50;
@@ -22,28 +22,28 @@ const ProgressBarWithData = (props) => {
 
 describe('ProgressBar', () => {
     it('renders with the correct percentage and text', () => {
-        const { container, getByText } = render(<ProgressBarWithData />);
+        const { container } = render(<ProgressBarWithData />);
         expect(container.querySelector('.progressBar')).toHaveStyle(
             `width: ${percentage}%`
         );
-        expect(getByText(text)).toBeInTheDocument();
+        expect(screen.getByText(text)).toBeInTheDocument();
     });
 
     it('renders additional text when provided', () => {
-        const { getByText } = render(<ProgressBarWithData textAbove={false} />);
+        render(<ProgressBarWithData textAbove={false} />);
 
         // Assert that the component renders additional text when provided
-        expect(getByText(additionalText)).toBeInTheDocument();
+        expect(screen.getByText(additionalText)).toBeInTheDocument();
     });
 
     it('handles textAbove prop correctly', () => {
-        const { getByText, queryByText } = render(<ProgressBarWithData />);
+        render(<ProgressBarWithData />);
 
         // Assert that the top text is rendered when textAbove is true
-        expect(getByText(text)).toBeInTheDocument();
+        expect(screen.getByText(text)).toBeInTheDocument();
 
         // Assert that the bottom text is not rendered when textAbove is true
-        expect(queryByText(additionalText)).toBeNull();
+        expect(screen.queryByText(additionalText)).toBeNull();
     });
 
     it('updates progress on percentage prop change', () => {

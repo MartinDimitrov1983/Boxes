@@ -1,13 +1,13 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Box from './index';
 
 const size = 'small';
 const color = 'blue';
 const dot = true;
 const calculateSmallBoxes = () => {};
-const containerClass = '.container';
 const opacity = 'opacity';
+const id = 'box';
 
 const BoxWithData = (props) => {
     return (
@@ -16,6 +16,7 @@ const BoxWithData = (props) => {
             color={color}
             dot={dot}
             calculateSmallBoxes={calculateSmallBoxes}
+            data-testid={id}
             {...props}
         />
     );
@@ -40,20 +41,18 @@ describe('Box', () => {
         const { container } = render(<BoxWithData />);
 
         // Initial state: opacity is true`
-        expect(container.querySelector(containerClass)).toHaveClass(opacity);
+        expect(screen.getByTestId(id)).toHaveClass(opacity);
 
         // Click the box to toggle opacity
-        fireEvent.click(container.querySelector(containerClass));
+        fireEvent.click(screen.getByTestId(id));
 
         // After click: opacity is false
-        expect(container.querySelector(containerClass)).not.toHaveClass(
-            opacity
-        );
+        expect(screen.getByTestId(id)).not.toHaveClass(opacity);
 
         // Click again to toggle back to true
-        fireEvent.click(container.querySelector(containerClass));
+        fireEvent.click(screen.getByTestId(id));
 
         // After second click: opacity is true
-        expect(container.querySelector(containerClass)).toHaveClass(opacity);
+        expect(screen.getByTestId(id)).toHaveClass(opacity);
     });
 });

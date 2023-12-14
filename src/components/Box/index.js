@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './index.module.css';
 import { TYPE, COLOR } from '../../utils/constants';
 
-const Box = ({ size, color, dot, calculateSmallBoxes }) => {
+const Box = ({ size, color, dot, calculateSmallBoxes, ...props }) => {
     const [opacity, setOpacity] = useState(true);
 
     const clickHandler = (e) => {
@@ -16,6 +16,7 @@ const Box = ({ size, color, dot, calculateSmallBoxes }) => {
         <div
             className={`${styles.container} ${opacity ? styles.opacity : ''}`}
             onClick={clickHandler}
+            {...props}
         >
             <div className={`${styles.box} ${styles[size]} ${styles[color]}`}>
                 {dot && <span className={styles.dot}></span>}
