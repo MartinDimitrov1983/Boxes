@@ -1,10 +1,9 @@
 import React from 'react';
 import ProgressBar from '../ProgressBar';
 import styles from './index.module.css';
-import { SMALL_TARGET } from '../../utils/constants';
 
 const ActualProgress = ({ target, actualPercentage }) => {
-    const difference = Math.abs(SMALL_TARGET - actualPercentage);
+    const difference = Math.abs(target - actualPercentage);
     const SMALL_TARGET_PERCENT = `Small target ${target}%`;
     const ACTUAL_PROGRESS = `Actual ${actualPercentage}%`;
     const DIFFERENCE = `Difference ${difference}%`;

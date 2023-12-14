@@ -6,7 +6,7 @@ export const getBoxes = () => {
             return setTimeout(() => reject(new Error('Boxes not found')), 1000);
         }
 
-        setTimeout(() => resolve(boxes), 1000);
+        return setTimeout(() => resolve(boxes), 1000);
     });
 };
 

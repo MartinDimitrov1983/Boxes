@@ -9,7 +9,7 @@ const Box = ({ size, color, dot, calculateSmallBoxes }) => {
 
         calculateSmallBoxes && calculateSmallBoxes(size, opacity === true);
     };
-
+    console.log(opacity)
     return (
         <div
             className={`${styles.container} ${opacity ? styles.opacity : ""}`}
