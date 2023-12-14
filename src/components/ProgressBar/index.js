@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styles from './index.module.css';
 import { PROGRESS_VALUE } from '../../utils/constants';
 
-const ProgressBar = ({ percentage, text, textAbove, additionalText, ...props }) => {
+const ProgressBar = ({
+    percentage,
+    text,
+    textAbove,
+    additionalText,
+    ...props
+}) => {
     const [progress, setProgress] = useState(percentage);
     const width = `${progress === PROGRESS_VALUE ? progress - 1 : progress}%`;
 
@@ -39,6 +46,20 @@ const ProgressBar = ({ percentage, text, textAbove, additionalText, ...props }) 
             )}
         </div>
     );
+};
+
+ProgressBar.propTypes = {
+    percentage: PropTypes.number,
+    text: PropTypes.string,
+    textAbove: PropTypes.bool,
+    additionalText: PropTypes.string,
+};
+
+ProgressBar.defaultProps = {
+    percentage: 50,
+    text: 'Test text',
+    textAbove: true,
+    additionalText: '',
 };
 
 export default ProgressBar;

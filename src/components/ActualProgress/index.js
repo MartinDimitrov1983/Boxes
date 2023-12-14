@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProgressBar from '../ProgressBar';
 import styles from './index.module.css';
 
@@ -24,6 +25,16 @@ const ActualProgress = ({ target, actualPercentage }) => {
             />
         </div>
     );
+};
+
+ActualProgress.propTypes = {
+    target: PropTypes.number,
+    actualPercentage: PropTypes.number,
+};
+
+ActualProgress.defaultProps = {
+    target: 60,
+    actualPercentage: 0,
 };
 
 export default ActualProgress;

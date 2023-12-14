@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './index.module.css';
+import { TYPE, COLOR } from '../../utils/constants';
 
 const Box = ({ size, color, dot, calculateSmallBoxes }) => {
     const [opacity, setOpacity] = useState(true);
@@ -7,12 +9,12 @@ const Box = ({ size, color, dot, calculateSmallBoxes }) => {
     const clickHandler = (e) => {
         setOpacity((prev) => !prev);
 
-        calculateSmallBoxes && calculateSmallBoxes(size, opacity === true);
+        calculateSmallBoxes(size, opacity === true);
     };
-    console.log(opacity)
+
     return (
         <div
-            className={`${styles.container} ${opacity ? styles.opacity : ""}`}
+            className={`${styles.container} ${opacity ? styles.opacity : ''}`}
             onClick={clickHandler}
         >
             <div className={`${styles.box} ${styles[size]} ${styles[color]}`}>
@@ -20,6 +22,20 @@ const Box = ({ size, color, dot, calculateSmallBoxes }) => {
             </div>
         </div>
     );
+};
+
+Box.propTypes = {
+    size: PropTypes.oneOf([TYPE.SMALL, TYPE.BIG]),
+    color: PropTypes.oneOf([COLOR.BLUE, COLOR.GREEN, COLOR.ORANGE]),
+    dot: PropTypes.bool,
+    calculateSmallBoxes: PropTypes.func,
+};
+
+Box.defaultProps = {
+    size: TYPE.SMALL,
+    color: COLOR.BLUE,
+    dot: true,
+    calculateSmallBoxes: () => {},
 };
 
 export default Box;
