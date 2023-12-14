@@ -38,7 +38,7 @@ describe('Box', () => {
     });
 
     it('toggles opacity on click', () => {
-        const { container } = render(<BoxWithData />);
+        render(<BoxWithData />);
 
         // Initial state: opacity is true`
         expect(screen.getByTestId(id)).toHaveClass(opacity);
