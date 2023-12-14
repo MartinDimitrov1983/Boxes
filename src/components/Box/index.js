@@ -7,14 +7,12 @@ const Box = ({ size, color, dot, calculateSmallBoxes }) => {
     const clickHandler = (e) => {
         setOpacity((prev) => !prev);
 
-        if (calculateSmallBoxes) {
-            calculateSmallBoxes(size, opacity === true);
-        }
+        calculateSmallBoxes && calculateSmallBoxes(size, opacity === true);
     };
 
     return (
         <div
-            className={`${styles.container} ${opacity && styles.opacity}`}
+            className={`${styles.container} ${opacity ? styles.opacity : ""}`}
             onClick={clickHandler}
         >
             <div className={`${styles.box} ${styles[size]} ${styles[color]}`}>

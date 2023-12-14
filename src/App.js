@@ -1,44 +1,59 @@
 import React, { useState, useEffect } from 'react';
+
 import Box from './components/Box';
 import ActualProgress from './components/ActualProgress';
+import Loading from './components/Laoding';
+import Error from './components/Error'
 import './App.css';
-import boxes from './utils/mock.data';
+
+import { fetchData } from './utils/helperFunctions';
+import { TYPE, SMALL_TARGET, CONVERT_TO_PERCENTAGE } from './utils/constants';
 
 function App() {
+    const [boxes, setBoxes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [actualPercentage, setActualPercentage] = useState(0);
     const [smallBoxes, setSmallBoxes] = useState(0);
     const [allBoxes, setAllBoxes] = useState(0);
-    const [target, setTarget] = useState('small');
-
-    const calculateSmallBoxes = (size, shouldAdd) => {
-
-        if (size === target && shouldAdd) {
-            setSmallBoxes((prev) => prev + 1);
-        }
-
-        shouldAdd && setAllBoxes((prev) => prev + 1);
-
-        if (size === target && !shouldAdd) {
-            setSmallBoxes((prev) => prev - 1);
-        }
-
-        !shouldAdd && setAllBoxes((prev) => prev - 1);
-    };
 
     useEffect(() => {
-        let percentage = 0;
+        fetchData(setBoxes, setLoading, setError);
+    }, []);
 
-        if (allBoxes > 0) {
-            percentage = Math.round((smallBoxes / allBoxes) * 100);
-        }
+    useEffect(() => {
+        const percentage =
+            allBoxes > 0
+                ? Math.round((smallBoxes / allBoxes) * CONVERT_TO_PERCENTAGE)
+                : 0;
 
         setActualPercentage(percentage);
-    }, [allBoxes]);
+    }, [allBoxes, smallBoxes]);
 
-    console.log(allBoxes, smallBoxes, actualPercentage);
+    const calculateSmallBoxes = (size, shouldAdd) => {
+        const incrementValue = shouldAdd ? 1 : -1;
+
+        if (size === TYPE.SMALL) {
+            setSmallBoxes((prev) => prev + incrementValue);
+        }
+
+        setAllBoxes((prev) => prev + incrementValue);
+    };
+
+    if (loading) {
+        return <Loading />;
+    }
+
+    if (!!error) {
+        return <Error message={error}/>;
+    }
+
     return (
         <>
-            <ActualProgress target={60} actualPercentage={actualPercentage} />
+            <ActualProgress
+                target={SMALL_TARGET}
+                actualPercentage={actualPercentage}
+            />
 
             <div className="main">
                 {boxes.map((box) => {

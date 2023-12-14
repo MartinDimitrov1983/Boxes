@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './index.module.css';
+import { PROGRESS_VALUE } from '../../utils/constants';
 
-const ProgressBar = ({ percentage, text, top, additionalText }) => {
-    const [progress, setProgress] = useState(0);
-    const width = `${progress === 100 ? progress - 1 : progress}%`;
+const ProgressBar = ({ percentage, text, textAbove, additionalText }) => {
+    const [progress, setProgress] = useState(percentage);
+    const width = `${progress === PROGRESS_VALUE ? progress - 1 : progress}%`;
 
     useEffect(() => {
         setProgress(percentage);
@@ -11,18 +12,21 @@ const ProgressBar = ({ percentage, text, top, additionalText }) => {
 
     return (
         <div className={styles.container}>
-            {top && (
+            {textAbove && (
                 <div>
                     <p className={styles.topText}>{text}</p>
                 </div>
             )}
             <div className={styles.progressBarContainer}>
                 <div
-                    className={`${styles.progressBar} ${!top && styles.purple}`}
+                    className={`${styles.progressBar} ${
+                        !textAbove ? styles.active : ''
+                    }`}
                     style={{ width: width }}
                 ></div>
+                1
             </div>
-            {!top && (
+            {!textAbove && (
                 <div
                     className={styles.constinerBottomText}
                     style={{
