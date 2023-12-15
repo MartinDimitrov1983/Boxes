@@ -7,7 +7,7 @@ const ActualProgress = ({ target, actualPercentage }) => {
     const difference = Math.abs(target - actualPercentage);
     const SMALL_TARGET_PERCENT = `Small target ${target}%`;
     const ACTUAL_PROGRESS = `Actual ${actualPercentage}%`;
-    const DIFFERENCE = `Difference ${difference}%`;
+    const DIFFERENCE_TEXT = `Difference ${difference}%`;
 
     return (
         <div className={styles.container}>
@@ -20,7 +20,7 @@ const ActualProgress = ({ target, actualPercentage }) => {
             <ProgressBar
                 percentage={actualPercentage}
                 text={ACTUAL_PROGRESS}
-                additionalText={DIFFERENCE}
+                additionalText={DIFFERENCE_TEXT}
                 textAbove={false}
             />
         </div>
