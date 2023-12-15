@@ -12,13 +12,14 @@ const Box = ({ size, color, dot, calculateSmallBoxes, ...props }) => {
         calculateSmallBoxes(size, opacity === true);
     };
 
+    const containerClasses = `${styles.container} ${
+        opacity ? styles.opacity : ''
+    }`;
+    const boxClasses = `${styles.box} ${styles[size]} ${styles[color]}`;
+
     return (
-        <div
-            className={`${styles.container} ${opacity ? styles.opacity : ''}`}
-            onClick={clickHandler}
-            {...props}
-        >
-            <div className={`${styles.box} ${styles[size]} ${styles[color]}`}>
+        <div className={containerClasses} onClick={clickHandler} {...props}>
+            <div className={boxClasses}>
                 {dot && <span className={styles.dot}></span>}
             </div>
         </div>

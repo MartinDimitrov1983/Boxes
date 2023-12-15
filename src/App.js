@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Box from './components/Box';
 import ActualProgress from './components/ActualProgress';
-import Loading from './components/Laoding';
+import Loading from './components/Loading';
 import Error from './components/Error';
 import './App.css';
 
