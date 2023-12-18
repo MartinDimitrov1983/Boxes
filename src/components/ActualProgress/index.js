@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import ProgressBar from '../ProgressBar';
 import styles from './index.module.css';
 
-const ActualProgress = ({ target, actualPercentage }) => {
+const ActualProgress = ({ target, actualPercentage, targetText }) => {
     const difference = Math.abs(target - actualPercentage);
-    const SMALL_TARGET_PERCENT = `Small target ${target}%`;
+    const SMALL_TARGET_PERCENT = `${targetText} target ${target}%`;
     const ACTUAL_PROGRESS = `Actual ${actualPercentage}%`;
     const DIFFERENCE_TEXT = `Difference ${difference}%`;
 

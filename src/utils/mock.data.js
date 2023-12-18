@@ -1,7 +1,12 @@
 import { TYPE, COLOR } from './constants';
 
 const boxes = [
-    { id: 'box-1', size: TYPE.BIG, color: COLOR.GREEN, dot: true },
+    {
+        id: 'box-1',
+        size: TYPE.BIG,
+        color: COLOR.GREEN,
+        dot: true,
+    },
     { id: 'box-2', size: TYPE.SMALL, color: COLOR.BLUE, dot: false },
     { id: 'box-3', size: TYPE.BIG, color: COLOR.ORANGE, dot: false },
     { id: 'box-4', size: TYPE.BIG, color: COLOR.GREEN, dot: false },

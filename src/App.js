@@ -16,6 +16,8 @@ function App() {
     const [actualPercentage, setActualPercentage] = useState(0);
     const [smallBoxes, setSmallBoxes] = useState(0);
     const [allBoxes, setAllBoxes] = useState(0);
+    const [dotBoxes, setDotBoxes] = useState(0);
+    const [dotPercentage, setDotPercentage] = useState(0);
 
     useEffect(() => {
         fetchData(setBoxes, setLoading, setError);
@@ -28,15 +30,25 @@ function App() {
                 : 0;
 
         setActualPercentage(percentage);
-    }, [allBoxes, smallBoxes]);
+        const dotPercentage =
+            allBoxes > 0
+                ? Math.round((dotBoxes / allBoxes) * CONVERT_TO_PERCENTAGE)
+                : 0;
 
-    const calculateSmallBoxes = (size, shouldAdd) => {
+        setDotPercentage(dotPercentage);
+    }, [allBoxes, smallBoxes, dotBoxes]);
+
+    const countBoxes = (shouldSet, setter,incrementValue) => {
+        if (shouldSet) {
+            setter((prev) => prev + incrementValue);
+        }
+    };
+
+    const calculateTargetBoxes = (size, dot, shouldAdd) => {
         const incrementValue = shouldAdd ? 1 : -1;
 
-        if (size === TYPE.SMALL) {
-            setSmallBoxes((prev) => prev + incrementValue);
-        }
-
+        countBoxes(size === TYPE.SMALL,setSmallBoxes,incrementValue)
+        countBoxes(dot,setDotBoxes,incrementValue)
         setAllBoxes((prev) => prev + incrementValue);
     };
 
@@ -53,6 +65,12 @@ function App() {
             <ActualProgress
                 target={SMALL_TARGET}
                 actualPercentage={actualPercentage}
+                targetText="Small"
+            />
+            <ActualProgress
+                target={SMALL_TARGET}
+                actualPercentage={dotPercentage}
+                targetText="Dot"
             />
 
             <div className="main">
@@ -63,7 +81,7 @@ function App() {
                             size={box.size}
                             color={box.color}
                             dot={box.dot}
-                            calculateSmallBoxes={calculateSmallBoxes}
+                            calculateSmallBoxes={calculateTargetBoxes}
                         />
                     );
                 })}
